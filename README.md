@@ -2,7 +2,7 @@
 
 Built with HTML, CSS and Javascript
 
-![Website](https://img.shields.io/badge/-check%20it%20out-f50056?style=for-the-badge)
+[![Website](https://img.shields.io/badge/-check%20it%20out-f50056?style=for-the-badge)](https://sdnitrogen.github.io)
 
 ### Preview
 
