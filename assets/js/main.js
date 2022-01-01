@@ -129,6 +129,106 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
     },
 });
 
+/*==================== CONTACT ====================*/
+const contactName = document.querySelector("#contact__name"),
+    contactEmail = document.querySelector("#contact__email"),
+    contactSubject = document.querySelector("#contact__subject"),
+    contactMessage = document.querySelector("#contact__message"),
+    successAlert = document.querySelector(".success__alert"),
+    warningAlert = document.querySelector(".warning__alert"),
+    successMsg = document.querySelector(".success__msg"),
+    warningMsg = document.querySelector(".warning__msg"),
+    successAlertClose = document.querySelector(".success__alert-close-btn"),
+    warningAlertClose = document.querySelector(".warning__alert-close-btn");
+var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+function validate_form() {
+    if (contactName.value == "") {
+        warningMsg.innerHTML = "Enter a name!";
+        warningAlert.classList.remove("hide");
+        warningAlert.classList.add("show");
+        warningAlert.classList.add("showAlert");
+        setTimeout(function () {
+            warningAlert.classList.remove("show");
+            warningAlert.classList.add("hide");
+        }, 3000);
+    } else if (!contactEmail.value.match(emailPattern)) {
+        warningMsg.innerHTML = "Enter a valid email!";
+        warningAlert.classList.remove("hide");
+        warningAlert.classList.add("show");
+        warningAlert.classList.add("showAlert");
+        setTimeout(function () {
+            warningAlert.classList.remove("show");
+            warningAlert.classList.add("hide");
+        }, 3000);
+    } else if (contactSubject.value == "") {
+        warningMsg.innerHTML = "Enter a subject!";
+        warningAlert.classList.remove("hide");
+        warningAlert.classList.add("show");
+        warningAlert.classList.add("showAlert");
+        setTimeout(function () {
+            warningAlert.classList.remove("show");
+            warningAlert.classList.add("hide");
+        }, 3000);
+    } else if (contactMessage.value == "") {
+        warningMsg.innerHTML = "Enter a message!";
+        warningAlert.classList.remove("hide");
+        warningAlert.classList.add("show");
+        warningAlert.classList.add("showAlert");
+        setTimeout(function () {
+            warningAlert.classList.remove("show");
+            warningAlert.classList.add("hide");
+        }, 3000);
+    } else {
+        sendMeEmail();
+    }
+}
+
+function sendMeEmail() {
+    var tParams = {
+        from_name: contactName.value,
+        from_email: contactEmail.value,
+        subject: contactSubject.value,
+        message: contactMessage.value,
+    };
+    emailjs.send("service_1eg0wt3", "template_tjomg0d", tParams).then(
+        function (response) {
+            successMsg.innerHTML = "Message Sent!";
+            successAlert.classList.remove("hide");
+            successAlert.classList.add("show");
+            successAlert.classList.add("showAlert");
+            setTimeout(function () {
+                successAlert.classList.remove("show");
+                successAlert.classList.add("hide");
+            }, 3000);
+            contactName.value = "";
+            contactEmail.value = "";
+            contactSubject.value = "";
+            contactMessage.value = "";
+        },
+        function (error) {
+            warningMsg.innerHTML = "Failed. Retry!";
+            warningAlert.classList.remove("hide");
+            warningAlert.classList.add("show");
+            warningAlert.classList.add("showAlert");
+            setTimeout(function () {
+                warningAlert.classList.remove("show");
+                warningAlert.classList.add("hide");
+            }, 3000);
+        }
+    );
+}
+
+warningAlertClose.onclick = () => {
+    warningAlert.classList.remove("show");
+    warningAlert.classList.add("hide");
+};
+
+successAlertClose.onclick = () => {
+    successAlert.classList.remove("show");
+    successAlert.classList.add("hide");
+};
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll("section[id]");
 
