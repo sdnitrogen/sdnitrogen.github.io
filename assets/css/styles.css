@@ -556,6 +556,14 @@ img {
     width: 85%;
 }
 
+.skills__cypress {
+    width: 80%;
+}
+
+.skills__cucumber {
+    width: 80%;
+}
+
 .skills__nodejs {
     width: 80%;
 }
@@ -629,6 +637,10 @@ img {
 }
 
 .skills__confluence {
+    width: 70%;
+}
+
+.skills__allure {
     width: 70%;
 }
 
